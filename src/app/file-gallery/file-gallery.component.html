@@ -1,0 +1,10 @@
+<h2>Image gallery</h2>
+<div fxLayout="row wrap">
+  <img
+    fxFlex="100%"
+    fxFlex.gt-xs="50%"
+    class="gallery__image"
+    *ngFor="let file of filesPreviews"
+    [src]="file"
+  />
+</div>

@@ -1,0 +1,37 @@
+<h1>File uploader</h1>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <div
+    class="drop-area"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    [ngClass]="{ 'drop-area__active': isDraggedOver }"
+    (drop)="handleDrop($event)"
+    (dragover)="handleDragOver($event)"
+    (dragenter)="handleDragEnter()"
+    (dragleave)="handleDragLeave()"
+  >
+    <mat-icon class="drop-area__icon">cloud_download</mat-icon>
+    <h2>Drag and drop your files here</h2>
+    <span>or</span>
+    <div class="file-loader">
+      <input
+        class="file-loader__input"
+        (change)="onFileChange($event)"
+        type="file"
+        accept="image/png, image/jpeg"
+        multiple
+        #file
+      />
+      <button
+        class="file-loader__button"
+        (click)="file.click()"
+        mat-raised-button
+        color="primary"
+      >
+        Browse Files
+      </button>
+    </div>
+  </div>
+</div>
+<div>Total files count: {{ totalFilesCount }}</div>
+<div>Images count: {{ files ? files.length : 0 }}</div>
